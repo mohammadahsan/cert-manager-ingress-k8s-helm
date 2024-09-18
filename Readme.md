@@ -155,12 +155,12 @@ az identity create --name "${IDENTITY_NAME}" --resource-group "${IDENTITY_RESOUR
 #### Create a Federated Credetials
 
 We will fetch `IDENTIY_CLIENT_ID` The identity created in last step.<br>
-We will fetch the `SERVICE_ACCOUNT_ISSUER` This will be service account used by vault.
+We will fetch the `SERVICE_ACCOUNT_ISSUER` This will be service account used by cert-manager.
 
 ```bash
 # Create Federated Credential
-export SERVICE_ACCOUNT_NAME=cert-manager # ℹ️ This is the default Kubernetes ServiceAccount used by the vault
-export SERVICE_ACCOUNT_NAMESPACE=cert-manager # ℹ️ This is the namespace for vault service account.
+export SERVICE_ACCOUNT_NAME=cert-manager # ℹ️ This is the default Kubernetes ServiceAccount used by the cert-manager
+export SERVICE_ACCOUNT_NAMESPACE=cert-manager # ℹ️ This is the namespace for cert-manager service account.
 export SERVICE_ACCOUNT_ISSUER=$(az aks show --resource-group $RESOURCE_GROUP --name $CLUSTER_NAME --query "oidcIssuerProfile.issuerUrl" -o tsv)
 export IDENTITY_CLIENT_ID=$(az identity show --name "${IDENTITY_NAME}" --resource-group "${IDENTITY_RESOURCE_GROUP}"  --query 'clientId' -o tsv)
 
