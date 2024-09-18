@@ -1,0 +1,6 @@
+serviceAccount:
+  create: true
+  labels:
+    azure.workload.identity/use: "true"
+podLabels:
+  azure.workload.identity/use: "true"

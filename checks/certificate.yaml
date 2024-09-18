@@ -1,0 +1,16 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: dev-xyz-com
+  namespace: cert-manager
+spec:
+  secretName: dev-xyz-com-tls
+  privateKey:
+    rotationPolicy: Always
+  dnsNames:
+  - "dev.xyz.com"
+  - "*.dev.xyz.com"
+  issuerRef:
+    name: letsencrypt
+    kind: ClusterIssuer
+    group: cert-manager.io

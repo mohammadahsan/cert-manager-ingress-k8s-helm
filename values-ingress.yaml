@@ -1,0 +1,7 @@
+controller:
+  service:
+    loadBalancerIP: "10.10.10.100"  # Replace with your reserved IP address For Private VNet make sure to use from the subnet range.
+    annotations:
+      service.beta.kubernetes.io/azure-load-balancer-internal: "true" # If you want to keep Ingress Public comment this line.
+      service.beta.kubernetes.io/azure-load-balancer-health-probe-request-path: "/healthz" # Setting health probe path will let default azure health checks to return healthy.  
+      service.beta.kubernetes.io/azure-dns-label-name: "<organizationname>-<env>-aks-001-ingress" # I like to label its easier to identify
